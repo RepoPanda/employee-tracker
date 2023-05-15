@@ -25,3 +25,14 @@ CREATE TABLE employee (
     manager_id INT,
     PRIMARY KEY (id)
 );
+
+
+
+
+  (Frank, Smith, 1, NULL),
+    (Sally, Johnson, 2),
+    (George, Washington, 3),
+    (John F, Kennedy, 4),
+    (Wes, Anderson, 5),
+    (Quentin, Tarantino, 6),
+    (Martin, Scorsese, 7);
