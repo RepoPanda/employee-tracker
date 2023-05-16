@@ -33,8 +33,8 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-    (Philip, J. Fry, 1, NULL),
-    (Turanga, Leela, 2, 1),
+    (Philip J, Fry, 1, NULL),
+    (Leela, Turanga, 2, 1),
     (Bender, Rodriguez, 3, 1),
     (Bart, Simpson, 4, 1),
     (Butters, Stotch, 5, 1),
