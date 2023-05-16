@@ -70,3 +70,26 @@ const initialPrompt = () => {
     });
 };
 
+// view all employees
+const viewAllEmployees = () => {};
+
+// add employee
+const addEmployee = () => {};
+
+// update employee role
+const updateEmployeeRole = () => {};
+
+// view all roles
+const viewAllRoles = () => {};
+
+// add role
+const addRole = () => {};
+
+// view all departments
+const viewAllDepartments = () => {};
+
+// add department
+const addDepartment = () => {};
+
+// quit
+const quit = () => {};
