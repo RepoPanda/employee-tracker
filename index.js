@@ -1,13 +1,14 @@
 // requires
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const inquirer = require('inquirer');
+require('console.table');
 
 // create connection to mysql database
 const connection = mysql.createConnection({
-    host: 'localhost127.0.0.1',
-    port: 3306,
-    user: 'user1234',
-    password: 'pw1234',
+    host: '127.0.0.1',
+    port: '3306',
+    user: 'root',
+    password: '',
     database: 'employee_db'
 });
 
@@ -41,6 +42,7 @@ const initialPrompt = () => {
             'Quit'
         ]
     }).then((answer) => {
+        console.log(answer.choices);
         switch (answer.choices) {
             case 'View All Employees':
                 viewAllEmployees();
@@ -67,11 +69,40 @@ const initialPrompt = () => {
                 connection.end();
                 break;
         }
+    }).catch((err)=>{
+        if(err)throw err;
     });
 };
 
 // view all employees
-const viewAllEmployees = () => {};
+const viewAllEmployees = () => {
+    console.log('Viewing all employees...\n');
+    let query = 
+    `SELECT
+        employee.id,
+        employee.first_name,
+        employee.last_name,
+        role.title,
+        department.name AS department,
+        role.salary,
+        CONCAT(manager.first_name, ' ', manager.last_name) AS manager
+    FROM employee
+    LEFT JOIN role 
+        ON employee.role_id = role.id
+    LEFT JOIN department
+        ON department.id = role.department_id
+    LEFT JOIN employee manager
+        ON manager.id = employee.manager_id`
+        
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+
+        console.table(res);
+        console.log("Employees viewed!\n");
+        
+        initialPrompt();
+    });
+};
 
 // add employee
 const addEmployee = () => {};

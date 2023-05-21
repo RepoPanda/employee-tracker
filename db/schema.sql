@@ -13,7 +13,7 @@ CREATE TABLE role (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL(10,2) NOT NULL,
-    department_id INT NOT NULL,
+    department_id INT,
     PRIMARY KEY (id)
 );
 
@@ -21,18 +21,7 @@ CREATE TABLE employee (
     id INT NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    role_id INT NOT NULL,
+    role_id INT,
     manager_id INT,
     PRIMARY KEY (id)
 );
-
-
-
-
-  (Frank, Smith, 1, NULL),
-    (Sally, Johnson, 2),
-    (George, Washington, 3),
-    (John F, Kennedy, 4),
-    (Wes, Anderson, 5),
-    (Quentin, Tarantino, 6),
-    (Martin, Scorsese, 7);
