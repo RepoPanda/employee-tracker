@@ -105,7 +105,46 @@ const viewAllEmployees = () => {
 };
 
 // add employee
-const addEmployee = () => {};
+const addEmployee = () => {
+    console.log('Adding an employee...\n');
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'firstName',
+            message: 'What is the employee\'s first name?'
+        },
+        {
+            type: 'input',
+            name: 'lastName',
+            message: 'What is the employee\'s last name?'
+        },
+        {
+            type: 'input',
+            name: 'roleId',
+            message: 'What is the employee\'s role ID?'
+        },
+        {
+            type: 'input',
+            name: 'managerId',
+            message: 'What is the employee\'s manager ID?'
+        }
+    ])
+    .then((answer) => {
+        let query = 
+        `INSERT INTO employee SET ?`
+        connection.query(query,{
+            first_name: answer.firstName,
+            last_name: answer.lastName,
+            role_id: answer.roleId,
+            manager_id: answer.managerId
+        }, (err, res) => {
+            if (err) throw err;
+            console.log('Employee added!\n');
+            initialPrompt();
+        });
+
+    });
+};
 
 // update employee role
 const updateEmployeeRole = () => {};
