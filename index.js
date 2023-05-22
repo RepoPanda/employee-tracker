@@ -147,7 +147,30 @@ const addEmployee = () => {
 };
 
 // update employee role
-const updateEmployeeRole = () => {};
+const updateEmployeeRole = () => {
+    console.log('Updating an employee\'s role...\n');
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'What is the employee\'s ID?'
+        },
+        {
+            type: 'input',
+            name: 'roleId',
+            message: 'What is the employee\'s new role ID?'
+        },
+    ])
+    .then((answer) => {
+        let query = 
+        `UPDATE employee SET role_id = ? WHERE id = ?`
+        connection.query(query,[answer.roleId, answer.employeeId], (err, res) => {
+            if (err) throw err;
+            console.log('Employee role updated!\n');
+            initialPrompt();
+        });
+    });
+};
 
 // view all roles
 const viewAllRoles = () => {};
