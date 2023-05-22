@@ -196,7 +196,39 @@ const viewAllRoles = () => {
 };
 
 // add role
-const addRole = () => {};
+const addRole = () => {
+    console.log('Adding a role...\n');
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is the role\'s title?'
+        },
+        {
+            type: 'input',
+            name: 'departmentId',
+            message: 'What is the role\'s department ID?'
+        },
+        {
+            type: 'input',
+            name: 'salary',
+            message: 'What is the role\'s salary?'
+        }
+    ])
+    .then((answer) => {
+        let query = 
+        `INSERT INTO role SET ?`
+        connection.query(query,{
+            title: answer.title,
+            department_id: answer.departmentId,
+            salary: answer.salary
+        }, (err, res) => {
+            if (err) throw err;
+            console.log('Role added!\n');
+            initialPrompt();
+        });
+    });
+};
 
 // view all departments
 const viewAllDepartments = () => {};
