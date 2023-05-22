@@ -173,7 +173,27 @@ const updateEmployeeRole = () => {
 };
 
 // view all roles
-const viewAllRoles = () => {};
+const viewAllRoles = () => {
+    console.log('Viewing all roles...\n');
+    let query = 
+    `SELECT
+        role.id,
+        role.title,
+        department.name AS department,
+        role.salary
+    FROM role
+    LEFT JOIN department
+        ON department.id = role.department_id`
+        
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+
+        console.table(res);
+        console.log("Roles viewed!\n");
+        
+        initialPrompt();
+    });
+};
 
 // add role
 const addRole = () => {};
