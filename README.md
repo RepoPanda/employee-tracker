@@ -17,8 +17,9 @@ This is a command-line application that allows the user to View, Add and Update 
 
 ## Submission
 
-GitHub Repository Link: 
-https://github.com/RepoPanda/employee-tracker
+GitHub Repository Link:
+https://github.com/RepoPanda/employee-trackerLinks
+ 
 
 Video demonstrating the app's functionality:
-https://drive.google.com/file/d/19BaH8JNsTVR6sDK9sXpkkgCE8CBJe_gj/view
+https://drive.google.com/file/d/1L641zpucuvq3d7pYktgShWnFDl4IGWQ4/view 
