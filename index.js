@@ -66,7 +66,7 @@ const initialPrompt = () => {
                 addDepartment();
                 break;
             case 'Quit':
-                connection.end();
+                connection.end(); // end connection
                 break;
         }
     }).catch((err)=>{
@@ -231,10 +231,43 @@ const addRole = () => {
 };
 
 // view all departments
-const viewAllDepartments = () => {};
+const viewAllDepartments = () => {
+    console.log('Viewing all departments...\n');
+    let query = 
+    `SELECT
+        department.id,
+        department.name AS department
+    FROM department`
+        
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+
+        console.table(res);
+        console.log("Departments viewed!\n");
+        
+        initialPrompt();
+    });
+};
 
 // add department
-const addDepartment = () => {};
-
-// quit
-const quit = () => {};
+const addDepartment = () => {
+    console.log('Adding a department...\n');
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the department\'s name?'
+        }
+    ])
+    .then((answer) => {
+        let query = 
+        `INSERT INTO department SET ?`
+        connection.query(query,{
+            name: answer.name
+        }, (err, res) => {
+            if (err) throw err;
+            console.log('Department added!\n');
+            initialPrompt();
+        });
+    });
+};
